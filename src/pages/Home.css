@@ -525,6 +525,14 @@
   overflow: hidden;
 }
 
+.cta-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 6rem;
+  overflow: hidden;     /* prevents margin collapsing */
+  display: flow-root;   /* modern margin-collapse fix */
+}
+
+
 .cta-section::before {
   content: '';
   position: absolute;

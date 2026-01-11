@@ -157,16 +157,7 @@ const Home = () => {
                 <li>Review and grade submissions</li>
               </ul>
             </div>
-            <div className="role-card">
-              <div className="role-icon primary">📊</div>
-              <h3 className="role-title">For Administrators</h3>
-              <ul className="role-features">
-                <li>Manage all users and roles</li>
-                <li>Approve and manage courses</li>
-                <li>View platform analytics</li>
-                <li>Configure system settings</li>
-              </ul>
-            </div>
+          
           </div>
         </div>
       </section>
@@ -183,25 +174,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-brand">
-              <div className="logo-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="32" height="32" rx="8" fill="#14b8a6"/>
-                  <path d="M16 10L10 13V20L16 23L22 20V13L16 10Z" fill="white"/>
-                  <path d="M16 10V23" stroke="white" strokeWidth="2"/>
-                </svg>
-              </div>
-              <span className="logo-text">LearnHub</span>
-            </div>
-            <p className="footer-copyright">© 2025 LearnHub. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
