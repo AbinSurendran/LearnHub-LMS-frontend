@@ -1,0 +1,158 @@
+.course-details-container {
+  min-height: calc(100vh - 200px);
+}
+
+.course-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.course-header-image-wrapper {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--bg-secondary);
+}
+
+.course-header-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.course-header-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.course-header-content h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.course-description-full {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+  line-height: 1.8;
+}
+
+.course-info {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.course-actions {
+  margin-top: 1.5rem;
+}
+
+.lessons-section {
+  padding: 3rem 0;
+}
+
+.lessons-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.lesson-item:hover {
+  transform: translateX(4px);
+}
+
+.lesson-item.completed {
+  border-left: 4px solid var(--primary-color);
+}
+
+.lesson-number {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.lesson-content {
+  flex: 1;
+}
+
+.lesson-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.completed-badge {
+  padding: 0.25rem 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.lesson-meta {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .course-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .course-header-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .course-info {
+    justify-content: center;
+  }
+
+  .lesson-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+
+
