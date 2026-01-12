@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { coursesAPI } from '../../services/api'
 import './Courses.css'
+import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
+
 
 const Courses = () => {
   const [courses, setCourses] = useState([])
@@ -44,7 +47,7 @@ const Courses = () => {
           <p className="courses-subtitle">Discover courses that match your learning goals.</p>
         </div>
 
-        <div className="courses-filters">
+        {/* <div className="courses-filters">
           <div className="search-bar">
             <span className="search-icon">🔍</span>
             <input
@@ -70,7 +73,42 @@ const Courses = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <div className="courses-filters">
+  <div className="search-bar">
+    <span className="search-icon">
+      <SearchIcon fontSize="medium" />
+    </span>
+
+    <input
+      type="text"
+      placeholder="Search courses..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="search-input"
+    />
+  </div>
+
+  <div className="category-filters">
+    <div className="filter-icon">
+      <FilterListIcon fontSize="medium" />
+    </div>
+
+    <div className="category-tags">
+      {categories.map(category => (
+        <button
+          key={category}
+          className={`category-tag ${selectedCategory === category ? 'active' : ''}`}
+          onClick={() => setSelectedCategory(category)}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
 
         {loading ? (
           <div className="loading">Loading courses...</div>

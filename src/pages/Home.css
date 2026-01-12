@@ -677,3 +677,17 @@
 
 
 
+.feature-icon svg,
+.role-icon svg {
+  font-size: 40px;
+}
+
+.feature-icon.primary,
+.role-icon.primary {
+  color: #4f46e5;
+}
+
+.feature-icon.accent,
+.role-icon.accent {
+  color: #f59e0b;
+}

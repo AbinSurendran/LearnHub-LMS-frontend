@@ -215,3 +215,17 @@
   }
 }
 
+.search-icon,
+.filter-icon {
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+

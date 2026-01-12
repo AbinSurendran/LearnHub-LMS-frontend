@@ -1,42 +1,54 @@
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { coursesAPI, usersAPI, enrollmentsAPI } from '../services/api'
-import './Home.css'
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { coursesAPI, usersAPI, enrollmentsAPI } from "../services/api";
+import "./Home.css";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import SchoolIcon from "@mui/icons-material/School";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import PersonIcon from "@mui/icons-material/Person";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Home = () => {
   const [stats, setStats] = useState({
     students: 0,
     courses: 0,
     instructors: 0,
-    satisfaction: 95
-  })
+    satisfaction: 95,
+  });
 
   useEffect(() => {
-    fetchStats()
-  }, [])
+    fetchStats();
+  }, []);
 
   const fetchStats = async () => {
     try {
       const [usersRes, coursesRes, enrollmentsRes] = await Promise.all([
         usersAPI.getAll(),
         coursesAPI.getAll(),
-        enrollmentsAPI.getAll()
-      ])
+        enrollmentsAPI.getAll(),
+      ]);
 
-      const students = usersRes.data.filter(u => u.role === 'student' && u.status === 'active').length
-      const instructors = usersRes.data.filter(u => u.role === 'instructor' && u.status === 'active').length
-      const courses = coursesRes.data.filter(c => c.status === 'active').length
+      const students = usersRes.data.filter(
+        (u) => u.role === "student" && u.status === "active"
+      ).length;
+      const instructors = usersRes.data.filter(
+        (u) => u.role === "instructor" && u.status === "active"
+      ).length;
+      const courses = coursesRes.data.filter(
+        (c) => c.status === "active"
+      ).length;
 
       setStats({
         students: students || 10000,
         courses: courses || 500,
         instructors: instructors || 100,
-        satisfaction: 95
-      })
+        satisfaction: 95,
+      });
     } catch (error) {
-      console.error('Error fetching stats:', error)
+      console.error("Error fetching stats:", error);
     }
-  }
+  };
 
   return (
     <div className="home-page">
@@ -48,10 +60,13 @@ const Home = () => {
             Start Learning Today
           </button>
           <h1 className="hero-title">
-            Unlock Your Potential with <span className="hero-title-accent">LearnHub</span>
+            Unlock Your Potential with{" "}
+            <span className="hero-title-accent">LearnHub</span>
           </h1>
           <p className="hero-description">
-            A comprehensive learning management system designed to help students, instructors, and administrators achieve their educational goals with ease.
+            A comprehensive learning management system designed to help
+            students, instructors, and administrators achieve their educational
+            goals with ease.
           </p>
           <div className="hero-actions">
             <Link to="/register" className="btn btn-accent">
@@ -70,7 +85,9 @@ const Home = () => {
         <div className="container">
           <div className="stats-grid">
             <div className="stat-item">
-              <div className="stat-number">{stats.students.toLocaleString()}+</div>
+              <div className="stat-number">
+                {stats.students.toLocaleString()}+
+              </div>
               <div className="stat-label">Active Students</div>
             </div>
             <div className="stat-item">
@@ -94,35 +111,52 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Everything You Need to Learn</h2>
           <p className="section-subtitle">
-            Our platform provides all the tools and features you need for an exceptional learning experience.
+            Our platform provides all the tools and features you need for an
+            exceptional learning experience.
           </p>
+
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon primary">📚</div>
+              <div className="feature-icon primary">
+                <MenuBookIcon fontSize="large" />
+              </div>
               <h3 className="feature-title">Rich Course Library</h3>
               <p className="feature-description">
-                Access hundreds of courses across multiple categories, from programming to design.
+                Access hundreds of courses across multiple categories, from
+                programming to design.
               </p>
             </div>
+
             <div className="feature-card">
-              <div className="feature-icon accent">👨‍🏫</div>
+              <div className="feature-icon accent">
+                <SchoolIcon fontSize="large" />
+              </div>
               <h3 className="feature-title">Expert Instructors</h3>
               <p className="feature-description">
-                Learn from industry professionals with real-world experience and expertise.
+                Learn from industry professionals with real-world experience and
+                expertise.
               </p>
             </div>
+
             <div className="feature-card">
-              <div className="feature-icon primary">📊</div>
+              <div className="feature-icon primary">
+                <BarChartIcon fontSize="large" />
+              </div>
               <h3 className="feature-title">Track Progress</h3>
               <p className="feature-description">
-                Monitor your learning journey with detailed progress tracking and analytics.
+                Monitor your learning journey with detailed progress tracking
+                and analytics.
               </p>
             </div>
+
             <div className="feature-card">
-              <div className="feature-icon primary">🎓</div>
+              <div className="feature-icon primary">
+                <WorkspacePremiumIcon fontSize="large" />
+              </div>
               <h3 className="feature-title">Earn Certificates</h3>
               <p className="feature-description">
-                Complete courses and earn certificates to showcase your achievements.
+                Complete courses and earn certificates to showcase your
+                achievements.
               </p>
             </div>
           </div>
@@ -134,11 +168,15 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Built for Everyone</h2>
           <p className="section-subtitle">
-            Whether you're a student, instructor, or administrator, our platform has the right tools for you.
+            Whether you're a student, instructor, or administrator, our platform
+            has the right tools for you.
           </p>
+
           <div className="roles-grid">
             <div className="role-card">
-              <div className="role-icon primary">🎓</div>
+              <div className="role-icon primary">
+                <PersonIcon fontSize="large" />
+              </div>
               <h3 className="role-title">For Students</h3>
               <ul className="role-features">
                 <li>Browse and enroll in courses</li>
@@ -147,8 +185,11 @@ const Home = () => {
                 <li>Submit assignments and get feedback</li>
               </ul>
             </div>
+
             <div className="role-card">
-              <div className="role-icon accent">⚙️</div>
+              <div className="role-icon accent">
+                <SettingsIcon fontSize="large" />
+              </div>
               <h3 className="role-title">For Instructors</h3>
               <ul className="role-features">
                 <li>Create and manage courses</li>
@@ -157,7 +198,6 @@ const Home = () => {
                 <li>Review and grade submissions</li>
               </ul>
             </div>
-          
           </div>
         </div>
       </section>
@@ -167,7 +207,8 @@ const Home = () => {
         <div className="container">
           <h2 className="cta-title">Ready to Start Learning?</h2>
           <p className="cta-description">
-            Join thousands of learners who are already advancing their skills with LearnHub.
+            Join thousands of learners who are already advancing their skills
+            with LearnHub.
           </p>
           <Link to="/register" className="btn btn-accent btn-large">
             Create Free Account →
@@ -175,13 +216,7 @@ const Home = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
-
-
-
-
-
-
+export default Home;
