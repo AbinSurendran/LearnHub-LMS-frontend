@@ -1,142 +1,161 @@
 .video-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(20,20,20,0.85), rgba(0,0,0,0.95));
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  padding: 2rem;
-  animation: fadeIn 0.2s ease;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease;
 }
 
+/* Fade background */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+/* Modal card */
 .video-modal-content {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  background-color: var(--bg-color);
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  animation: slideUp 0.3s ease;
+  max-width: 1100px;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 0 40px rgba(99,102,241,0.15);
+  overflow: hidden;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+  animation: zoomUp 0.35s ease;
 }
 
-@keyframes slideUp {
+/* Zoom entrance */
+@keyframes zoomUp {
   from {
-    transform: translateY(20px);
+    transform: scale(0.92) translateY(20px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
 }
 
+/* Close button */
 .video-modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: none;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  border: none;
   cursor: pointer;
+  font-size: 1.4rem;
+  color: white;
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  box-shadow: 0 6px 20px rgba(99,102,241,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10001;
-  transition: background-color 0.2s;
+  z-index: 5;
+  transition: all 0.25s ease;
 }
 
 .video-modal-close:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 10px 30px rgba(34,211,238,0.6);
 }
 
+/* Header */
 .video-modal-header {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(34,211,238,0.05));
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .video-modal-header h3 {
-  font-size: 1.5rem;
-  color: var(--text-primary);
   margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.4px;
 }
 
+/* Body */
 .video-modal-body {
-  padding: 2rem;
+  padding: 1.5rem;
   flex: 1;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Video wrapper */
 .video-modal-iframe-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
+  padding-bottom: 56.25%;
+  border-radius: 0.9rem;
   overflow: hidden;
-  border-radius: 0.5rem;
-  background-color: #000;
+  background: black;
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05);
 }
 
+/* Video */
 .video-modal-iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: none;
 }
 
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
+
   .video-modal-overlay {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
   .video-modal-content {
-    max-width: 100%;
+    border-radius: 1rem;
   }
 
   .video-modal-header {
-    padding: 1rem;
+    padding: 0.9rem 1rem;
   }
 
   .video-modal-header h3 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
   }
 
   .video-modal-body {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
   .video-modal-close {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 35px;
-    height: 35px;
-    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    top: 0.6rem;
+    right: 0.6rem;
   }
 }
 
+/* ================= LARGE SCREENS ================= */
 
-
+@media (min-width: 1400px) {
+  .video-modal-content {
+    max-width: 1250px;
+  }
+}
